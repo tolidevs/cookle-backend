@@ -2,10 +2,18 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
-  def index
-    @users = User.all
+  # def index
+  #   @users = User.all
 
-    render json: @users
+  #   render json: @users
+  # end
+
+  def login
+    user: User.find_by(email: params[:email])
+    if user && user.authenticate(params [:password])
+      render json: { id: id, email: email, name: name }
+    else
+      render json: { message: "Invalid username & password"}
   end
 
   # GET /users/1
@@ -46,6 +54,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :password, :email)
+      params.require(:user).permit(:id, :name, :password, :email)
     end
 end
