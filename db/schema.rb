@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_140242) do
 
   create_table "preferences", force: :cascade do |t|
     t.string "name"
+    t.string "search_value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,7 +40,6 @@ ActiveRecord::Schema.define(version: 2020_02_28_140242) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "password_digest"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
