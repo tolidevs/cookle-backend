@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  # before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
   # def index
@@ -9,11 +9,12 @@ class UsersController < ApplicationController
   # end
 
   def login
-    user: User.find_by(email: params[:email])
+    user = User.find_by(email: params[:email])
     if user && user.authenticate(params [:password])
-      render json: { id: id, email: email, name: name }
+      render json: { id: id, email: email }
     else
       render json: { message: "Invalid username & password"}
+    end
   end
 
   # GET /users/1
@@ -23,14 +24,14 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    p user_params
-    # @user = User.new(user_params)
+    @user = User.new(user_params)
 
-    # if @user.save
-    #   render json: @user, status: :created, location: @user
-    # else
-    #   render json: @user.errors, status: :unprocessable_entity
-    # end
+    if @user.save
+      render json: @user, status: :created, location: @user
+    else
+      puts "failed"
+      render json: @user.errors, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /users/1
@@ -49,12 +50,12 @@ class UsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+    # def set_user
+    #   @user = User.find(params[:id])
+    # end
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:id, :name, :password, :email)
+      params.require(:user).permit(:id, :password, :email)
     end
 end

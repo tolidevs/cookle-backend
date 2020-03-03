@@ -5,6 +5,8 @@ require 'json'
  
 class RecipesApiRequest
 
+  attr_accessor :search_string, :calories, :diet, :allergies, :cook_time
+
   def initialize(search_string, calories=nil, diet=nil, allergies=nil, cook_time=nil)
     @search_string = search_string
     @calories = calories
@@ -33,7 +35,7 @@ class RecipesApiRequest
   def get_recipes
     uri = URI.parse(create_url_string)
     response = Net::HTTP.get_response(uri)
-    puts response.body
+    p response.body
   end
 
 #   def parse_json

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :preferences
   resources :users
 
+  post "/users/create", to: "users#create"
+
   post "/login", to: "users#login"
 
   post "/search-recipes", to: "application#search_recipes"
