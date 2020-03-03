@@ -5,4 +5,10 @@ class ApplicationController < ActionController::API
        results = request.get_recipes
        render json: results
     end
+
+    def get_recipe
+        request = RecipesApiRequest.new(params[:id])
+       results = request.get_recipes
+       render json: results
+    end
 end

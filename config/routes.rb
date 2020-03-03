@@ -10,6 +10,6 @@ Rails.application.routes.draw do
 
   post "/search-recipes", to: "application#search_recipes"
 
-  post "/recipe", to: "application#recipe"
+  post "/recipe", to: "application#get_recipe"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

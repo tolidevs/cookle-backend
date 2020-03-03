@@ -4,6 +4,7 @@ require 'json'
 
  
 class GetRecipe
+  attr_accessor :id
 
   def initialize(id)
     @id = id
@@ -20,7 +21,7 @@ class GetRecipe
   def get_recipe
     uri = URI.parse(create_url_string)
     response = Net::HTTP.get_response(uri)
-    puts response.body
+    p response.body
   end
 
     
