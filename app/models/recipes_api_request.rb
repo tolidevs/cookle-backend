@@ -7,11 +7,11 @@ class RecipesApiRequest
 
   attr_accessor :search_string, :calories, :diet, :allergies, :cook_time
 
-  def initialize(search_string, calories=nil, diet=nil, allergies=nil, cook_time=nil)
+  def initialize(search_string, diet=nil, allergies=nil, calories=nil, cook_time=nil)
     @search_string = search_string
-    @calories = calories
     @diet = diet
     @allergies = allergies
+    @calories = calories
     @cook_time = cook_time
   end
 
