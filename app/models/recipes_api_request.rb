@@ -17,7 +17,6 @@ class RecipesApiRequest
 
 
   def create_url_string
-    # api_key = ENV['API_KEY']
 
     search_string = @search_string.gsub(" ","+")
     # search_string = @search_string.split.length > 1 ? @search_string.gsub(" ","+") : @search_string
