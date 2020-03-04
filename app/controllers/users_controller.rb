@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   # before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
-  # def index
-  #   @users = User.all
+  def index
+    @users = User.all
 
-  #   render json: @users
-  # end
+    render json: @users
+  end
 
   def login
     user = User.find_by(email: params[:email])

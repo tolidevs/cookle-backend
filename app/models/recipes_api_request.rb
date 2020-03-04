@@ -17,7 +17,7 @@ class RecipesApiRequest
 
 
   def create_url_string
-    api_key = "5bc217c99bc84840860afcc2f1426f3e"
+    # api_key = ENV['API_KEY']
 
     search_string = @search_string.gsub(" ","+")
     # search_string = @search_string.split.length > 1 ? @search_string.gsub(" ","+") : @search_string
@@ -26,7 +26,7 @@ class RecipesApiRequest
     allergies = @allergies ? "&intolerances=#{@intolerances.join("%252C")}" : nil
     diet = @diet ? "&diet=#{@diet.join("%252C")}" : nil
 
-    baseurl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=#{api_key}&query="
+    baseurl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=#{ENV['API_KEY']}&query="
     # baseurl = "https://api.edamam.com/search?app_id=f304495d&app_key=19524319950ac5b51210c7f31b312b47&q="
 
     @url = "#{baseurl}#{search_string}&number=18#{cook_time}#{diet}#{calories}&instructionsRequired=true"
