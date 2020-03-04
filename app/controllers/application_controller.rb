@@ -7,8 +7,8 @@ class ApplicationController < ActionController::API
     end
 
     def get_recipe
-        request = RecipesApiRequest.new(params[:id])
-        results = request.get_recipes
+        request = GetRecipe.new(params[:id])
+        results = request.get_recipe
         render json: results
     end
 end

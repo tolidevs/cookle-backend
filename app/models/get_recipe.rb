@@ -12,10 +12,9 @@ class GetRecipe
 
 
   def create_url_string
-    api_key = "5bc217c99bc84840860afcc2f1426f3e"
     id = @id
 
-    url = "https://api.spoonacular.com/recipes/#{id}/information?apiKey=#{api_key}"
+    url = "https://api.spoonacular.com/recipes/#{id}/information?apiKey=#{ENV['API_KEY']}"
   end
 
   def get_recipe
