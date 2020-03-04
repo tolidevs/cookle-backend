@@ -5,14 +5,14 @@ require 'json'
  
 class RecipesApiRequest
 
-  attr_accessor :search_string, :calories, :diet, :allergies, :cook_time
+  attr_reader :search_params
 
-  def initialize(search_string, diet=nil, allergies=nil, calories=nil, cook_time=nil)
-    @search_string = search_string
-    @diet = diet
-    @allergies = allergies
-    @calories = calories
-    @cook_time = cook_time
+  def initialize(search_params)
+    @search_string = search_params["search_string"]
+    @diet = search_params["diet"]
+    @allergies = search_params["allergies"]
+    @calories = search_params["calories"]
+    @cook_time = search_params["cook_time"]
   end
 
 
@@ -20,15 +20,16 @@ class RecipesApiRequest
 
     search_string = @search_string.gsub(" ","+")
     # search_string = @search_string.split.length > 1 ? @search_string.gsub(" ","+") : @search_string
-    calories = @calories ? "&maxCalories=#{@calories.to_i}" : nil
-    cook_time = @cook_time ? "&maxReadyTime=#{@cook_time.to_i}" : nil
-    allergies = @allergies ? "&intolerances=#{@intolerances.join("%252C")}" : nil
-    diet = @diet ? "&diet=#{@diet.join("%252C")}" : nil
+    calories = @calories > 0 ? "&maxCalories=#{@calories.to_i}" : ""
+    cook_time = @cook_time > 0 ? "&maxReadyTime=#{@cook_time.to_i}" : ""
+    allergies = @allergies ? "&intolerances=#{@allergies.join("%252C")}" : ""
+    diet = @diet ? "&diet=#{@diet.join("%252C")}" : ""
 
     baseurl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=#{ENV['API_KEY']}&query="
     # baseurl = "https://api.edamam.com/search?app_id=f304495d&app_key=19524319950ac5b51210c7f31b312b47&q="
-
+    
     @url = "#{baseurl}#{search_string}&number=18#{cook_time}#{diet}#{calories}&instructionsRequired=true"
+    # debugger
   end
 
   def get_recipes
