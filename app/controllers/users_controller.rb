@@ -10,8 +10,8 @@ class UsersController < ApplicationController
 
   def login
     user = User.find_by(email: params[:email])
-    if user && user.authenticate(params [:password])
-      render json: { id: id, email: email }
+    if user && user.authenticate(params[:password])
+      render json: { id: user.id, email: user.email }
     else
       render json: { message: "Invalid username & password"}
     end
@@ -24,8 +24,8 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
-
+    @user = User.new(email: params[:email], password: params[:password])
+    
     if @user.save
       render json: @user, status: :created, location: @user
     else

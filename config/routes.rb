@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post "/users/create", to: "users#create"
 
   post "/login", to: "users#login"
+  post "/create", to: "users#create"
 
   post "/search-recipes", to: "application#search_recipes"
 
