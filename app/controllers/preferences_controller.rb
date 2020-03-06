@@ -2,16 +2,16 @@ class PreferencesController < ApplicationController
   before_action :set_preference, only: [:show, :update, :destroy]
 
   # GET /preferences
-  def index
-    @preferences = Preference.all
+  # def index
+  #   @preferences = Preference.all
 
-    render json: @preferences
-  end
+  #   render json: @preferences
+  # end
 
-  # GET /preferences/1
-  def show
-    render json: @preference
-  end
+  # # GET /preferences/1
+  # def show
+  #   render json: @preference
+  # end
 
   # POST /preferences
   # def create
@@ -46,6 +46,6 @@ class PreferencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def preference_params
-      params.require(:preference).permit(:name)
+      params.require(:preference).permit(:name, :allergy_or_diet)
     end
 end
