@@ -5,7 +5,7 @@ require 'faker'
 
 10.times do
 #     User.create(email: Faker::Internet.email, password: 'password')
-# end
+end
 
 # create preferences
 p1 = Preference.create(allergy_or_diet: "allergy", name: "dairy")
