@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: cookle_backend_production
-  username: cookle_backend
-  password: <%= ENV['COOKLE_BACKEND_DATABASE_PASSWORD'] %>
+  # database: cookle_backend_production
+  # username: cookle_backend
+  # password: <%= ENV['COOKLE_BACKEND_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
