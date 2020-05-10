@@ -34,6 +34,20 @@ class UsersController < ApplicationController
     end
   end
 
+  #Get /users/1/saved_recipes
+  def saved_recipes
+    @saved_recipes = SavedRecipe.all.where(user_id: params[:id])
+
+    render json: @saved_recipes
+  end
+
+  #Get /users/1/preferences
+  def preferences
+    @preferences = UserPreference.all.where(user_id: params[:id])
+
+    render json: @preferences
+  end
+
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
@@ -42,6 +56,7 @@ class UsersController < ApplicationController
       render json: @user.errors, status: :unprocessable_entity
     end
   end
+
 
   # DELETE /users/1
   def destroy
