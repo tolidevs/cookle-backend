@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       render json: @user, status: :created, location: @user
     else
       puts "failed"
-      render json: @user.errors, status: :unprocessable_entity
+      render json: { message: @user.errors.full_messages } 
     end
   end
 

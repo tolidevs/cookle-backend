@@ -4,7 +4,7 @@ require 'faker'
 # ----creating users tags randomly -------- 
 
 10.times do
-#     User.create(email: Faker::Internet.email, password: 'password')
+    User.create(email: Faker::Internet.email, password: 'password')
 end
 
 # create preferences
