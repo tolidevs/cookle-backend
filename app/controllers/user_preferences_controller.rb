@@ -1,12 +1,12 @@
 class UserPreferencesController < ApplicationController
   before_action :set_user_preference, only: [:show, :update, :destroy]
 
-  # GET /user_preferences
-  def index
-    @user_preferences = UserPreference.all
+  # # GET /user_preferences
+  # def index
+  #   @user_preferences = UserPreference.all
 
-    render json: @user_preferences
-  end
+  #   render json: @user_preferences
+  # end
 
   # GET /user_preferences/1
   def show

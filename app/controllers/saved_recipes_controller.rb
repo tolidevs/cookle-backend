@@ -15,7 +15,7 @@ class SavedRecipesController < ApplicationController
 
   # POST /saved_recipes
   def create
-    @saved_recipe = SavedRecipe.new(saved_recipe_params)
+    @saved_recipe = SavedRecipe.new(recipe_id: params[:recipe_id], user_id: params[:user_id])
 
     if @saved_recipe.save
       render json: @saved_recipe, status: :created, location: @saved_recipe
@@ -40,12 +40,12 @@ class SavedRecipesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_saved_recipe
-      @saved_recipe = SavedRecipe.find(params[:id])
-    end
+    # def set_saved_recipe
+    #   @saved_recipe = SavedRecipe.find(params[:id])
+    # end
 
-    # Only allow a trusted parameter "white list" through.
-    def saved_recipe_params
-      params.require(:saved_recipe).permit(:user_id, :recipe_id)
-    end
+    # # Only allow a trusted parameter "white list" through.
+    # def saved_recipe_params
+    #   params.require(:saved_recipe).permit(:user_id, :recipe_id)
+    # end
 end
